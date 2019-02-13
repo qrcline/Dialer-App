@@ -1,2 +1,5 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>backspace-delete-action-button-512.png</file>
+    </qresource>
+</RCC>

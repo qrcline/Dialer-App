@@ -12,11 +12,14 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
@@ -31,11 +34,28 @@ public:
     QAction *actionExit;
     QWidget *centralWidget;
     QTableView *tableView;
-    QLabel *label;
+    QLabel *dialerScreen;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
+    QPushButton *keypad0;
+    QPushButton *keypad1;
+    QPushButton *keypad3;
+    QPushButton *keypad6;
+    QPushButton *keypad7;
+    QPushButton *keypad2;
+    QPushButton *keypad9;
+    QPushButton *keypad8;
+    QPushButton *keypadStar;
+    QPushButton *keypadPound;
+    QPushButton *keypad5;
+    QPushButton *keaypad4;
+    QPushButton *callButton;
+    QPushButton *backButton;
     QMenuBar *menuBar;
     QMenu *menuTools;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
+    QButtonGroup *keypadButtons;
 
     void setupUi(QMainWindow *Dialer)
     {
@@ -50,12 +70,133 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(320, 0, 301, 331));
+        tableView->setGeometry(QRect(290, 0, 331, 331));
         tableView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         tableView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(60, 20, 191, 31));
+        tableView->verticalHeader()->setVisible(false);
+        dialerScreen = new QLabel(centralWidget);
+        dialerScreen->setObjectName(QString::fromUtf8("dialerScreen"));
+        dialerScreen->setGeometry(QRect(40, 50, 161, 31));
+        dialerScreen->setFrameShape(QFrame::WinPanel);
+        dialerScreen->setAlignment(Qt::AlignCenter);
+        gridLayoutWidget = new QWidget(centralWidget);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(40, 120, 211, 202));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setSpacing(0);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        keypad0 = new QPushButton(gridLayoutWidget);
+        keypadButtons = new QButtonGroup(Dialer);
+        keypadButtons->setObjectName(QString::fromUtf8("keypadButtons"));
+        keypadButtons->addButton(keypad0);
+        keypad0->setObjectName(QString::fromUtf8("keypad0"));
+        keypad0->setMinimumSize(QSize(40, 40));
+        keypad0->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad0, 3, 1, 1, 1);
+
+        keypad1 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad1);
+        keypad1->setObjectName(QString::fromUtf8("keypad1"));
+        keypad1->setMinimumSize(QSize(40, 40));
+        keypad1->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad1, 0, 0, 1, 1);
+
+        keypad3 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad3);
+        keypad3->setObjectName(QString::fromUtf8("keypad3"));
+        keypad3->setMinimumSize(QSize(40, 40));
+        keypad3->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad3, 0, 2, 1, 1);
+
+        keypad6 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad6);
+        keypad6->setObjectName(QString::fromUtf8("keypad6"));
+        keypad6->setMinimumSize(QSize(40, 40));
+        keypad6->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad6, 1, 2, 1, 1);
+
+        keypad7 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad7);
+        keypad7->setObjectName(QString::fromUtf8("keypad7"));
+        keypad7->setMinimumSize(QSize(40, 40));
+        keypad7->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad7, 2, 0, 1, 1);
+
+        keypad2 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad2);
+        keypad2->setObjectName(QString::fromUtf8("keypad2"));
+        keypad2->setMinimumSize(QSize(40, 40));
+        keypad2->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad2, 0, 1, 1, 1);
+
+        keypad9 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad9);
+        keypad9->setObjectName(QString::fromUtf8("keypad9"));
+        keypad9->setMinimumSize(QSize(40, 40));
+        keypad9->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad9, 2, 2, 1, 1);
+
+        keypad8 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad8);
+        keypad8->setObjectName(QString::fromUtf8("keypad8"));
+        keypad8->setMinimumSize(QSize(40, 40));
+        keypad8->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad8, 2, 1, 1, 1);
+
+        keypadStar = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypadStar);
+        keypadStar->setObjectName(QString::fromUtf8("keypadStar"));
+        keypadStar->setMinimumSize(QSize(40, 40));
+        keypadStar->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypadStar, 3, 0, 1, 1);
+
+        keypadPound = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypadPound);
+        keypadPound->setObjectName(QString::fromUtf8("keypadPound"));
+        keypadPound->setMinimumSize(QSize(40, 40));
+        keypadPound->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypadPound, 3, 2, 1, 1);
+
+        keypad5 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keypad5);
+        keypad5->setObjectName(QString::fromUtf8("keypad5"));
+        keypad5->setMinimumSize(QSize(40, 40));
+        keypad5->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(keypad5, 1, 1, 1, 1);
+
+        keaypad4 = new QPushButton(gridLayoutWidget);
+        keypadButtons->addButton(keaypad4);
+        keaypad4->setObjectName(QString::fromUtf8("keaypad4"));
+        keaypad4->setMinimumSize(QSize(40, 40));
+        keaypad4->setMaximumSize(QSize(60, 60));
+        keaypad4->setFlat(false);
+
+        gridLayout->addWidget(keaypad4, 1, 0, 1, 1);
+
+        callButton = new QPushButton(gridLayoutWidget);
+        callButton->setObjectName(QString::fromUtf8("callButton"));
+        callButton->setMinimumSize(QSize(40, 40));
+        callButton->setMaximumSize(QSize(60, 60));
+
+        gridLayout->addWidget(callButton, 4, 1, 1, 1);
+
+        backButton = new QPushButton(centralWidget);
+        backButton->setObjectName(QString::fromUtf8("backButton"));
+        backButton->setGeometry(QRect(210, 50, 41, 31));
         Dialer->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Dialer);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -85,7 +226,21 @@ public:
         Dialer->setWindowTitle(QApplication::translate("Dialer", "Dialer", nullptr));
         actionOpen_Adress_Book->setText(QApplication::translate("Dialer", "Open Adress Book", nullptr));
         actionExit->setText(QApplication::translate("Dialer", "Exit", nullptr));
-        label->setText(QApplication::translate("Dialer", "TextLabel", nullptr));
+        dialerScreen->setText(QString());
+        keypad0->setText(QApplication::translate("Dialer", "0", nullptr));
+        keypad1->setText(QApplication::translate("Dialer", "1", nullptr));
+        keypad3->setText(QApplication::translate("Dialer", "3", nullptr));
+        keypad6->setText(QApplication::translate("Dialer", "6", nullptr));
+        keypad7->setText(QApplication::translate("Dialer", "7", nullptr));
+        keypad2->setText(QApplication::translate("Dialer", "2", nullptr));
+        keypad9->setText(QApplication::translate("Dialer", "9", nullptr));
+        keypad8->setText(QApplication::translate("Dialer", "8", nullptr));
+        keypadStar->setText(QApplication::translate("Dialer", "*", nullptr));
+        keypadPound->setText(QApplication::translate("Dialer", "#", nullptr));
+        keypad5->setText(QApplication::translate("Dialer", "5", nullptr));
+        keaypad4->setText(QApplication::translate("Dialer", "4", nullptr));
+        callButton->setText(QApplication::translate("Dialer", "Call", nullptr));
+        backButton->setText(QString());
         menuTools->setTitle(QApplication::translate("Dialer", "Tools", nullptr));
     } // retranslateUi
 
