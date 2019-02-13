@@ -74,6 +74,13 @@ QString MyAdressBookModel::updateNumber(int button)
 
 }
 
+void MyAdressBookModel::setNumber(QString numberinput)
+{
+    numberinput.remove(3);
+    numberinput.remove(7);
+    currentNumber=numberinput;
+}
+
 void MyAdressBookModel::openFile(QString filePath)
 {
     QFile file(filePath);

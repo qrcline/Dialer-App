@@ -25,6 +25,7 @@ public:
 
     QString getPhoneNumber(int index);
     QString updateNumber(int button);
+    void setNumber(QString number);
 
 
 private:

@@ -40,7 +40,8 @@ void Dialer::on_actionExit_triggered()
 
 void Dialer::on_tableView_clicked(const QModelIndex &index)
 {
-    ui->dialerScreen->setText(myModel->getPhoneNumber(index.row()));
+    myModel->setNumber(myModel->getPhoneNumber(index.row()));
+    ui->dialerScreen->setText(myModel->updateNumber(-2));
 }
 
 void Dialer::on_backButton_clicked()
