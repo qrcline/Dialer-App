@@ -76,8 +76,10 @@ QString MyAdressBookModel::updateNumber(int button)
 
 void MyAdressBookModel::setNumber(QString numberinput)
 {
-    numberinput.remove(3);
-    numberinput.remove(7);
+    //numberinput.remove(3,3);
+    //numberinput.remove(7,7);
+    numberinput.remove(QChar('-'), Qt::CaseInsensitive);
+    std::cout<<"The adress book number is: "<< numberinput.toStdString()<<std::endl;
     currentNumber=numberinput;
 }
 
@@ -97,18 +99,24 @@ void MyAdressBookModel::openFile(QString filePath)
 
     while(!in.atEnd())
     {
-        QString line=in.readLine();
-        QStringList fields= line.split(",");
-
-        for(int i=0; i<fields.length();i++)
+        for(int i=0; !in.atEnd(); i++)
         {
-            std::cout <<"["<<i<<"]"<<fields[i].toStdString();
-        }
-        std::cout<<std::endl;
+            QString line=in.readLine();
+            QStringList fields= line.split(",");
 
-        firstNames.push_back(fields[0]);
-        lastNames.push_back(fields[1]);
-        phoneNumbers.push_back(fields[7]);
+            if(i==0) continue;
+
+            for(int i=0; i<fields.length();i++)
+            {
+                std::cout <<"["<<i<<"]"<<fields[i].toStdString();
+            }
+            std::cout<<std::endl;
+
+            firstNames.push_back(fields[0]);
+            lastNames.push_back(fields[1]);
+            phoneNumbers.push_back(fields[7]);
+        }
+
 
     }
         file.close();

@@ -107,6 +107,7 @@ void Dialer::on_callButton_clicked()
     message.append(ui->dialerScreen->text());
         msgBox.setText(message);
         msgBox.exec();
+    ui->dialerScreen->setText("");
 }
 
 void Dialer::updateScreen(int button)
