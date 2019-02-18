@@ -15,6 +15,7 @@ Dialer::Dialer(QWidget *parent) :
     ui->backButton->setStyleSheet("border-image:url(:/backspace-delete-action-button-512.png)");
 
 
+
 }
 
 Dialer::~Dialer()
@@ -30,6 +31,7 @@ void Dialer::on_actionOpen_Adress_Book_triggered()
 
     std::cout<<fileName.toStdString()<<std::endl;
     myModel->openFile(fileName);
+    updateScreen(-2);//Sets the screen first time
 }
 
 void Dialer::on_actionExit_triggered()
