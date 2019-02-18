@@ -112,7 +112,7 @@ void Dialer::on_callButton_clicked()
 
 void Dialer::updateScreen(int button)
 {
-   // std::cout<<"Button Clicked:"<<button<<std::endl;
+
    ui->dialerScreen->setText(myModel->updateNumber(button));
 
 }

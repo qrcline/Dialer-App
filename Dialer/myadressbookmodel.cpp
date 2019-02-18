@@ -51,7 +51,7 @@ QString MyAdressBookModel::getPhoneNumber(int index)
 
 QString MyAdressBookModel::updateNumber(int button)
 {
-    std::cout<<"Button Clicked:"<<button<<std::endl;
+
     //Adds of subtracts from current number
     if(button>=0 &&currentNumber.length()<=9)
     {
@@ -81,6 +81,44 @@ void MyAdressBookModel::setNumber(QString numberinput)
     numberinput.remove(QChar('-'), Qt::CaseInsensitive);
     std::cout<<"The adress book number is: "<< numberinput.toStdString()<<std::endl;
     currentNumber=numberinput;
+}
+
+QString MyAdressBookModel::numberToCode(QString inputNumber)
+{
+    QString tempCode;
+    for (int i=0;i<inputNumber.length();i++)
+    {
+        switch (inputNumber.toUpper().at(i).toLatin1())
+        {
+        case 65:
+        case 66:
+        case 67:{tempCode.append('2');break;}
+        case 68:
+        case 69:
+        case 70:{tempCode.append('3');break;}
+        case 71:
+        case 72:
+        case 73:{tempCode.append('4');break;}
+        case 74:
+        case 75:
+        case 76:{tempCode.append('5');break;}
+        case 77:
+        case 78:
+        case 79:{tempCode.append('6');break;}
+        case 80:
+        case 81:
+        case 82:
+        case 83:{tempCode.append('7');break;}
+        case 84:
+        case 85:
+        case 86:{tempCode.append('8');break;}
+        case 87:
+        case 88:
+        case 89:
+        case 90:{tempCode.append('9');break;}
+
+        };
+    }
 }
 
 void MyAdressBookModel::openFile(QString filePath)
@@ -122,5 +160,5 @@ void MyAdressBookModel::openFile(QString filePath)
         file.close();
         emit layoutChanged();
 
-
 }
+

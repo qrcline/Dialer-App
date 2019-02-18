@@ -11,6 +11,7 @@ public:
     std::vector<QString> firstNames;
     std::vector<QString> lastNames;
     std::vector<QString> phoneNumbers;
+    std::vector<QString> numbersCode;
 
 
 
@@ -30,6 +31,7 @@ public:
 
 private:
        QString currentNumber="";
+       QString numberToCode(QString);
 
 };
 
