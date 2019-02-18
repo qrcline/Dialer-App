@@ -12,7 +12,7 @@ MyAdressBookModel::MyAdressBookModel(QObject *parent)
 
 int MyAdressBookModel::rowCount(const QModelIndex &parent) const
 {
-    return firstNames.size(); //This is the size of the vector
+    return filteredIndex.size(); //This is the size of the vector
 }
 
 int MyAdressBookModel::columnCount(const QModelIndex &parent) const
@@ -28,11 +28,11 @@ QVariant MyAdressBookModel::data(const QModelIndex &index, int role) const
         switch(index.column())
         {
         case 0:
-            return firstNames.at(index.row());
+            return firstNames.at(filteredIndex[index.row()]);
         case 1:
-            return lastNames.at(index.row());
+            return lastNames.at(filteredIndex[index.row()]);
         case 2:
-            return phoneNumbers.at(index.row());
+            return phoneNumbers.at(filteredIndex[index.row()]);
         }
 
 //        return QString("Row%1,Column%2")
@@ -70,6 +70,7 @@ QString MyAdressBookModel::updateNumber(int button)
     if(currentNumber.length()>7)
         numTemp.insert(7,"-");
 
+    setFilterString(currentNumber);//Sets the filter string
     return numTemp;
 
 }
@@ -83,7 +84,24 @@ void MyAdressBookModel::setNumber(QString numberinput)
     currentNumber=numberinput;
 }
 
-QString MyAdressBookModel::numberToCode(QString inputNumber)
+void MyAdressBookModel::setFilterString(QString fStr)
+{
+    // clear filtered index and then I will rebuild the index.
+       filteredIndex.clear();
+
+       // check if phone numbers are starting with fStr.
+       for (int i = 0; i < phoneNumbers.size(); i++) {
+           if (phoneNumbers[i].startsWith(fStr)||lastNames[i].startsWith(fStr)||firstNameCode[i].startsWith(fStr)) {
+               filteredIndex.push_back(i);
+               //std::cout << phoneNumbers[i].toStdString() << std::endl;
+           }
+       }
+
+       emit layoutChanged();
+}
+
+//Take the adress book name andreturns the coresponding numbers
+QString MyAdressBookModel::nameToCode(QString inputNumber)
 {
     QString tempCode;
     for (int i=0;i<inputNumber.length();i++)
@@ -119,6 +137,9 @@ QString MyAdressBookModel::numberToCode(QString inputNumber)
 
         };
     }
+        //tempCode.insert(3,"-");
+       // tempCode.insert(7,"-");
+    return tempCode;
 }
 
 void MyAdressBookModel::openFile(QString filePath)
@@ -134,6 +155,8 @@ void MyAdressBookModel::openFile(QString filePath)
     firstNames.clear();
     lastNames.clear();         //Clears the vectors
     phoneNumbers.clear();
+    firstNameCode.clear();
+    lastNameCode.clear();
 
     while(!in.atEnd())
     {
@@ -151,8 +174,12 @@ void MyAdressBookModel::openFile(QString filePath)
             std::cout<<std::endl;
 
             firstNames.push_back(fields[0]);
+            firstNameCode.push_back(nameToCode(fields[0]));
             lastNames.push_back(fields[1]);
+            lastNameCode.push_back(nameToCode(fields[1]));
             phoneNumbers.push_back(fields[7]);
+           // std::cout<<lastNameCode[0].toStdString()<<std::endl;
+
         }
 
 

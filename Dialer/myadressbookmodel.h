@@ -11,7 +11,8 @@ public:
     std::vector<QString> firstNames;
     std::vector<QString> lastNames;
     std::vector<QString> phoneNumbers;
-    std::vector<QString> numbersCode;
+    std::vector<QString> firstNameCode;
+    std::vector<QString>  lastNameCode;
 
 
 
@@ -23,15 +24,17 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
 
     void openFile(QString filePOath);
-
     QString getPhoneNumber(int index);
     QString updateNumber(int button);
     void setNumber(QString number);
 
+    void setFilterString(QString fStr);
+
+    std::vector<int> filteredIndex;
 
 private:
        QString currentNumber="";
-       QString numberToCode(QString);
+       QString nameToCode(QString);
 
 };
 

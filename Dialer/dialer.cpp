@@ -113,6 +113,7 @@ void Dialer::on_callButton_clicked()
 void Dialer::updateScreen(int button)
 {
 
+
    ui->dialerScreen->setText(myModel->updateNumber(button));
 
 }

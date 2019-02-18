@@ -227,18 +227,27 @@ public:
         actionOpen_Adress_Book->setText(QApplication::translate("Dialer", "Open Adress Book", nullptr));
         actionExit->setText(QApplication::translate("Dialer", "Exit", nullptr));
         dialerScreen->setText(QString());
-        keypad0->setText(QApplication::translate("Dialer", "0", nullptr));
+        keypad0->setText(QApplication::translate("Dialer", "0\n"
+"+", nullptr));
         keypad1->setText(QApplication::translate("Dialer", "1", nullptr));
-        keypad3->setText(QApplication::translate("Dialer", "3", nullptr));
-        keypad6->setText(QApplication::translate("Dialer", "6", nullptr));
-        keypad7->setText(QApplication::translate("Dialer", "7", nullptr));
-        keypad2->setText(QApplication::translate("Dialer", "2", nullptr));
-        keypad9->setText(QApplication::translate("Dialer", "9", nullptr));
-        keypad8->setText(QApplication::translate("Dialer", "8", nullptr));
+        keypad3->setText(QApplication::translate("Dialer", "3\n"
+"DEF", nullptr));
+        keypad6->setText(QApplication::translate("Dialer", "6\n"
+"MNO", nullptr));
+        keypad7->setText(QApplication::translate("Dialer", "7\n"
+"PQRS", nullptr));
+        keypad2->setText(QApplication::translate("Dialer", "2\n"
+"ABC", nullptr));
+        keypad9->setText(QApplication::translate("Dialer", "9\n"
+"WXYZ", nullptr));
+        keypad8->setText(QApplication::translate("Dialer", "8\n"
+"TUV", nullptr));
         keypadStar->setText(QApplication::translate("Dialer", "*", nullptr));
         keypadPound->setText(QApplication::translate("Dialer", "#", nullptr));
-        keypad5->setText(QApplication::translate("Dialer", "5", nullptr));
-        keaypad4->setText(QApplication::translate("Dialer", "4", nullptr));
+        keypad5->setText(QApplication::translate("Dialer", "5\n"
+"JKL", nullptr));
+        keaypad4->setText(QApplication::translate("Dialer", "4\n"
+"GHI", nullptr));
         callButton->setText(QApplication::translate("Dialer", "Call", nullptr));
         backButton->setText(QString());
         menuTools->setTitle(QApplication::translate("Dialer", "Tools", nullptr));
