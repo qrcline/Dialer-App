@@ -117,5 +117,11 @@ void Dialer::updateScreen(int button)
 
 
    ui->dialerScreen->setText(myModel->updateNumber(button));
+   if(ui->dialerScreen->text()=="206-281-2000")
+   {
+           QMessageBox msgBox;
+           msgBox.setText("Main SPU Number");
+           msgBox.exec();
+   }
 
 }
